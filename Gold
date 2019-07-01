@@ -1,0 +1,80 @@
+Paste this into your browser's developer console (F12)
+
+The script will create a rollable table named "Wild Magic Surge" with all 50 possibilities.
+You can of course use this script to create other rollable tables, all you have to do is to replace the values in the rows variable.
+You can also define a weight for each possibility by including a weight property like this:
+{ name: "Some name here", weight: 2 }
+
+
+(function(){
+    const rows = [
+        { name: "Bullseye: Use this effect when you hit with an attack; it is automatically considered a critical hit." },
+        { name: "Looking for Trouble: Use this effect when not in combat; the DM runs a combat encounter." },
+        { name: "Stalwart: Use this effect if an attack would render you unconscious; reduce the damage by half." },
+        { name: "Vengeance!: Use this effect when an ally is knocked unconscious; you gain your proficiency bonus to your attack rolls against the target that dropped your ally until your ally recovers or until the end of the encounter." },
+        { name: "Parley: Change a combat encounter into a social encounter." },
+        { name: "Captivating: Use this effect at the beginning of an encounter; your enemies may not act during the first round." },
+        { name: "Shame: Choose a creature; your target falls prey to an embarrassing but harmless situation (DM's discretion)." },
+        { name: "Strife: Choose two enemies; they now consider each other enemies for the remainder of the encounter." },
+        { name: "Duplicity: Automatically succeed on one Deception check; targets of the Deception check realize they have been deceived as soon as you're out of line of sight." },
+        { name: "Beginner's Luck: Choose a skill you do not have proficiency in; you automatically succeed on your next check using that skill." },
+        { name: "Master's Touch: Choose a skill you have proficiency or expertise in; you automatically succeed on your next skill check using that skill." },
+        { name: "Blunder: Use this effect when an enemy rolls a natural 20; that roll becomes a natural 1." },
+        { name: "Multitasker: You may take an additional action this turn for free." },
+        { name: "Self-Sacrifice: Use this effect when an ally no more than your speed+10 feet from you is hit by an attack that would knock them unconscious. You may move adjacent to the triggering ally as a reaction, and push them to an adjacent square. You take the damage from the attack instead of your ally." },
+        { name: "Wheel of Fortune: Discard all of your effects; roll for an equal number of new effects." },
+        { name: "Unstoppable: Use this effect on your turn. Until your next turn, you gain resistance to all types of damage and you can move through space occupied by enemies, but may not end your move in one. When you enter an enemy's space during this movement, you may make a melee attack against them adding your proficiency bonus. If you hit the target, they are pushed 5 feet and knocked prone." },
+        { name: "Face-Off: Choose an enemy; until the end of the encounter or until one of you is dropped to 0 HP, your target may only make attacks that include you as a target, and you may only make attacks that include the chosen enemy as a target. Neither you nor your chosen enemy may be targeted by attacks aside from eachother's." },
+        { name: "Coldcock: Use this effect when you fail a Deception, Persuasion, or Intimidation check against a single target; that target is unconscious." },
+        { name: "Fluke: Use this effect when you roll a natural 1; that roll becomes a natural 20." },
+        { name: "Frenzy Use this effect at the beginning of your turn; you can move an extra 10 feet and may attack every enemy adjacent to your movement path once. You will not take opportunity attacks and you gain advantage on your attack rolls until the end of your turn." },
+        { name: "Addle: Choose an enemy; that enemy loses the ability to use one of his attack actions of your choice until the end of the encounter." },
+        { name: "Desperation: Discard as many effects as you like. Each effect has a different value depending on it's rarity - Copper: 1, Silver: 2, Gold: 3, Platinum: 5. Add up the total value of your discarded effects; either add the total to your next roll, add the total to your AC until the end of your next turn, or regain HP equal to the total." },
+        { name: "Called Shot: Use this effect when making an attack, but before the roll. Choose an enemy; if you hit them with this attack, apply one of the following effects until the end of the encounter: blinded, prone, or deafened." },
+        { name: "Rip and Tear!: Use this effect when you kill an enemy. All creatures within 10 feet of that enemy are blinded until the end of your next turn. This attack creates a 15 foot zone of difficult terrain centered on that enemy an lasts until the end of the encounter." },
+        { name: "Heave Ho!: You may lift an object up to your normal load and throw it with a ranged basic attack. This throw has a range equal to twice your strength modifier x5 feet; a creature may be considered as an object for the purposes of this effect. This attack deals half of the damage as if the creature fell the same distance as they were thrown. If the attack hits, a thrown creature takes damage and is knocked prone. On a miss, a thrown creature takes no damage; but is prone." },
+        { name: "Lead Belly: Use this effect when eating or drinking something that is poisonous, tainted, etc. You suffer no ill effects from the ingested item." },
+        { name: "Time Out!: You and your allies may spend hit dice to recover as if taking a short rest; your enemies regain HP equal to half their missing health." },
+        { name: "Battle Scar: Use this effect when you are hit by an attack that would knock you unconscious; take no damage from this attack, but gain some other permanent effect based on the type of attack you negated. For example, if you negated a fire or acid attack, you may gain burn scars, or in the case of psychic damage, a minor insanity (DM's discretion)." },
+        { name: "Cheat: Take any dice that were just rolled and place them face-up however you like." },
+        { name: "Sow Confusion: Use this effect on your turn. A number of targets equal to your Charisma modifier must make a Charisma save DC 8 + your Charisma Modifier + your Proficiency Bonus; or they become confused. While confused, they behave erratically - instead of taking their turn as normal, have them roll 1d6, using the result as their action - 1: attack the effect user, 2: attack the nearest creature, 3: flee from the effect user, 4: do nothing,5-6: act normally." },
+        { name: "Enough!: Make a saving throw for all conditions or effects you are currently being affected by" },
+        { name: "Ambush: You, or a group of nearby NPCs (your choice), are ambushed by a group of hostile creatures." },
+        { name: "Visual Learner: Use this effect when an enemy you can see uses a non-legendary action. You can use it as an action 'restrictions such as recharge apply' until your next short or long rest." },
+        { name: "That's Just Crazy Enough to Work: Use this effect after you come up with an absurd, overcomplicated or just plain stupid solution to a challenge. That plan will now have the best chance to succeed in the challenge at hand." },
+        { name: "Traveling Merchant: You come across a traveling merchant; the exact nature of his wares are determined by the DM." },
+        { name: "Nemesis: Choose a hostile NPC, minion, or other monster that you have interacted with or fought previously. The chosen creature becomes a recurring villain (DM's discretion)." },
+        { name: "No, No, Let Me See That: A magic item your party identifies changes to a different magic item of of similar power. Physically, the magic item appears to be the original item (DM's discretion)." },
+        { name: "Windfall: You gain a large amount of gold of which the DM determines the exact amount and means of finding." },
+        { name: "Free Samples: You encounter an individual who willingly provides you and your party with samples of his concoctions; the exact effects of this concoction is determined by the DM." },
+        { name: "Stop Them, You Fools!: Use this effect when you and your party decide to flee. Instead of pursuing you immediately, your enemies stay dumbfounded until you're out of sight." },
+        { name: "Hang On!: Use this effect when an ally is about to fall; you may move your speed+10 feet towards them. If you end your move adjacent to them with this movement, they do not fall, but are prone in a space adjacent to the square which they would have fallen." },
+        { name: "Guesswork: The DM must reveal an obscured area for you, however he has no obligations to advise you on any of the contents in that area." },
+        { name: "What's That, Girl?: You may speak with a beast as if they spoke your language; only you can understand the creature, and only long enough to receive some small bit of information, or to ask the creature a favor (DM's discretion)." },
+        { name: "Be Aggressive: This turn you may take an additional attack action even if you could already do so." },
+        { name: "Crashing the Party: Use this effect during combat; a creature, or a group of creatures, hostile to both you and your enemies, enters the fray." },
+        { name: "Apprentice: You come across someone willing to train you in a skill." },
+        { name: "You've Got Mail: You receive a message personally asking for the assistance of you or your party." },
+        { name: "Enchanter: When using this effect you may either immediately identify or attune to one magical item." },
+        { name: "Backup: An NPC you are familiar with arrives to assist with the task at hand." },
+        { name: "Prized Possession: Use this effect after an encounter; you discover a magical item among the enemies' belongings (DM's discretion)." },
+    ];
+
+    console.log("Creating table...");
+    $("a[href='#deckstables'").click();
+    $("#addrollabletable").click();
+    setTimeout(function() {
+        $(".rollabletable").find("td:contains('new-table')").last().parent().click();
+        const tableWidget = $(".ui-dialog").find("span.ui-dialog-title:contains('new-table')").last().parent().parent();
+        tableWidget.find("input.name").val("Gold Table");
+        for (let i = 0; i < rows.length; i++) {
+            tableWidget.find("button.addtableitem").click();
+            const itemWidget = $(".ui-dialog").find("span.ui-dialog-title:contains('Edit Table Item')").last().parent().parent();
+            itemWidget.find("input.name").val(rows[i].name);
+            itemWidget.find("input.weight").val(rows[i].weight || 1);
+            itemWidget.find("button:contains('Save Changes')").click();
+        }
+        tableWidget.find("button:contains('Save Changes')").click();
+        console.log("Done!");
+    }, 200);
+})();

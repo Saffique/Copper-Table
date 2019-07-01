@@ -1,0 +1,80 @@
+Paste this into your browser's developer console (F12)
+
+The script will create a rollable table named "Wild Magic Surge" with all 50 possibilities.
+You can of course use this script to create other rollable tables, all you have to do is to replace the values in the rows variable.
+You can also define a weight for each possibility by including a weight property like this:
+{ name: "Some name here", weight: 2 }
+
+
+(function(){
+    const rows = [
+        { name: "Inspiring Soliloquy: Make a speech; you may take as long as you like. At the end of this speech, if it was inspiring enough, your allies gain the benefits as if they had just taken a short rest." },
+        { name: "Deus Ex Machina: An enemy or obstacle is dealt with by some outside force." },
+        { name: "Exit Stage Right: Use this effect when your character would die; instead of dying, you leave the scene in some fashion, only to return at a dramatic moment later as determined by the DM." },
+        { name: "Just as Planned: Use this effect during an encounter; you may effectively pause the encounter and make plans with the rest of the party. You may take as long as you like to plan, and resume the combat once you're happy with the plan. The DM may provide bonuses, such as advantage, to those that follow the plan." },
+        { name: "Sudden Fascination: Choose an NPC; that NPC becomes enamored with you for one reason or another." },
+        { name: "Call for Reinforcements: A group of allies arrive to assist your party." },
+        { name: "Leap of Faith: Use this effect when you deliberately jump from a deadly height; you take no damage from the fall. If your allies immediately follow you, they take no damage, either." },
+        { name: "Mistaken Identity: Choose an NPC; your target mistakes you for someone else entirely, for better or worse (DM's discretion)." },
+        { name: "Blaze of Glory: Until the end of the encounter you gain resistance to all types of damage; you may add your proficiency bonus as an additional bonus to all attack and damage rolls; you have advantage on all saves. You die at the end of the encounter." },
+        { name: "Dire Portents: Use this effect during a long; during your long rest, you dream/have a vision about future events." },
+        { name: "Explosions!: Use this effect when you hit with a spell attack; all creatures within 15 feet of the target must make a Dexterity save or take 1d10 x the caster's level of both force and fire damage and are knocked prone. If they succeed on the save, they take half damage." },
+        { name: "Long Time, No See: Choose an NPC you have just met; from this point forward, you and the target NPC have been lifelong acquaintance/old rivals (DM's discretion)." },
+        { name: "The Trap is Sprung: Choose an enemy; they fall for a trap of your own design. You may take as long as you like to design this trap, and the trap is treated as if it was planted long before (DM's discretion)" },
+        { name: "Compelling Argument: Choose an NPC; if you make a successful Intimidation or Persuasion check against that NPC, they provide you with information or an item, even if the NPC didn't have either previously (DM's discretion)." },
+        { name: "Force of Nature: Nature lends a timely aid of some sort to you and your party." },
+        { name: "Change of Scenery: Use this effect during a combat encounter; the environment and/or terrain of the combat changes drastically (DM's discretion)." },
+        { name: "Second Thoughts: Use this effect when you would kill an enemy with an attack; instead of killing them, they become your ally (DM's discretion)." },
+        { name: "Dramatic Entrance: Use this effect during your first turn in combat before any other action; all enemies within your line of sight are stunned until you or an ally make an attack or similar aggressive action against any of the affected enemies, or until you are out of line of sight." },
+        { name: "The Enemy of My Enemy: Choose an enemy; an unlikely creature, hostile to the enemy of your choice, suddenly arrives on the scene." },
+        { name: "Soulbound: Choose an enemy; that enemy dies, and you die as well. You may not return to life by any means unless the targeted enemy returns to life as well." },
+        { name: "Disaster!: A disaster, natural or otherwise, immediately occurs." },
+        { name: "Mysterious Stranger: An unknown individual comes to your aid, only to leave as abruptly as they came." },
+        { name: "Strangers in a Strange Land: You come across a group of strangers from a far away place; the exact nature of the strangers is determined by the DM." },
+        { name: "Cameo: A famous or notorious NPC of your choice makes a brief appearance (DM's discretion)." },
+        { name: "Hijack!: Use this effect when you're traveling in a vehicle of some kind; hostile NPCs make an attempt to take the vehicle over; the exact intentions of the NPCs is determined by the DM." },
+        { name: "Cutscene: The DM plays out a scene involving NPCs in an upcoming encounter. Any information revealed by this scene is unknown to your character." },
+        { name: "Flashback: The DM runs a short social or combat encounter that occurred in your character's or your party's past." },
+        { name: "True Potential: An item in your possession reveals itself to be magical; the DM determines the item and the nature of its magic." },
+        { name: "Stealing the Spotlight: You encounter another adventuring party that has either similar or conflicting goals as your party's." },
+        { name: "Kidnapped!: You are made witness to a kidnapping, or you find yourself abducted in some fashion." },
+        { name: "True Identity: An NPC is revealed to not be who they say they are. The DM determines the specifics of this revelation." },
+        { name: "Madness: Choose an NPC; that NPC begins to act very oddly." },
+        { name: "Prepare to Die!: A creature comes seeking revenge against you or another member of your party for either a real or imagined slight." },
+        { name: "Saving Grace: When in what appears to be an inescapable situation, you find yourself praying to a deity or entity and are granted a means to survive, escape, etc. You must, at the next level, regardless of ability score requirements, multi-class into a divine class serving that deity or entity (DM's discretion)." },
+        { name: "Walk a Mile In My Shoes: This effect activates at the beginning of the next combat; exchange character sheets and control of those characters with another player until the end of the encounter." },
+        { name: "On My Terms: You may challenge an enemy to a competition of your choosing (unarmed combat, a battle of wits, a gambling game, etc.); your opponent must accept." },
+        { name: "Placebo Effect: Something seemingly harmless becomes a dangerous threat in some fashion." },
+        { name: "There's Something I Ought to Tell You: Confess something to another member of your party; if that party member returns the sentiment, and the DM considers it good enough of a confession (i.e., funny, touching, entertaining), you and your ally gain the benefits of a short rest." },
+        { name: "Did I Just Say That Out Loud?: Choose an enemy or NPC; that NPC loses the ability to use their internal monologue." },
+        { name: "Ticket, Please: Use this effect when travelling somewhere on foot; you find some alternate means of transportation." },
+        { name: "Safe Haven: You and your party come across some manner of safe area (a tavern, a grove, a small community) amidst a generally hostile environment; you may stay there as long as you like, however, upon leaving, you may find it difficult to find it again in the future." },
+        { name: "Protégé: You find yourself a protégé; you may either choose a friendly NPC as your protégé (DM's discretion), or let the DM create one who seeks you out." },
+        { name: "Rocks Fall: Use this effect while in combat; some manner of catastrophe occurs, putting everyone at risk. All creatures in combat must make an immediate Intelligence or Dexterity save equal to 10 + the level of the effect user. On a successful save, a creature takes half its current health in damage; on a failed save, they are dropped to 0 HP." },
+        { name: "Curiouser and Curiouser: Use this effect when you've defeated a major enemy; that enemy is either revealed to be not who you thought it was, or was being manipulated by yet another enemy of yours. The DM determines the exact nature of the ruse." },
+        { name: "Perfect Coordination: Use this effect during combat; until the end of the encounter, you and your allies may use any number of Hit Dice to heal another ally, as well as give them any number of actions on your turn (Standard, Bonus, Reaction) by sacrificing your own." },
+        { name: "Countdown: The encounter you're in now, or the adventure you're on now, has a time limit of some sort imposed on it if there was no time limit beforehand." },
+        { name: "Gambler: You find a Deck of Many Things pouch with only one card within it." },
+        { name: "Lucky Find: You find a rare or higher magic item (DM's discretion)." },
+        { name: "Double-Dip: If you roll this effect you may roll for 2 more and discard this effect." },
+        { name: "Ascension: Use this effect upon receiving; you and your party instantly gain a level." },
+    ];
+
+    console.log("Creating table...");
+    $("a[href='#deckstables'").click();
+    $("#addrollabletable").click();
+    setTimeout(function() {
+        $(".rollabletable").find("td:contains('new-table')").last().parent().click();
+        const tableWidget = $(".ui-dialog").find("span.ui-dialog-title:contains('new-table')").last().parent().parent();
+        tableWidget.find("input.name").val("Platinum Table");
+        for (let i = 0; i < rows.length; i++) {
+            tableWidget.find("button.addtableitem").click();
+            const itemWidget = $(".ui-dialog").find("span.ui-dialog-title:contains('Edit Table Item')").last().parent().parent();
+            itemWidget.find("input.name").val(rows[i].name);
+            itemWidget.find("input.weight").val(rows[i].weight || 1);
+            itemWidget.find("button:contains('Save Changes')").click();
+        }
+        tableWidget.find("button:contains('Save Changes')").click();
+        console.log("Done!");
+    }, 200);
+})();

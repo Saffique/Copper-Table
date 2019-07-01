@@ -64,7 +64,7 @@ The script will create a rollable table named "Copper Table" with all 50 possibi
     setTimeout(function() {
         $(".rollabletable").find("td:contains('new-table')").last().parent().click();
         const tableWidget = $(".ui-dialog").find("span.ui-dialog-title:contains('new-table')").last().parent().parent();
-        tableWidget.find("input.name").val("Copper Table");
+        tableWidget.find("input.name").val("CopperTable");
         for (let i = 0; i < rows.length; i++) {
             tableWidget.find("button.addtableitem").click();
             const itemWidget = $(".ui-dialog").find("span.ui-dialog-title:contains('Edit Table Item')").last().parent().parent();

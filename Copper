@@ -1,7 +1,7 @@
 Paste this into your browser's developer console (F12)
-https://i.pinimg.com/originals/e6/b7/ad/e6b7ad908ad4581003b9fdd349a1198b.png
-The script will create a rollable table named "Wild Magic Surge" with all 50 possibilities.
-You can of course use this script to create other rollable tables, all you have to do is to replace the values in the rows variable.
+Paste here: https://i.pinimg.com/originals/e6/b7/ad/e6b7ad908ad4581003b9fdd349a1198b.png
+The script will create a rollable table named "Copper Table" with all 50 possibilities.
+
 
 
 (function(){

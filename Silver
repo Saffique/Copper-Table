@@ -36,7 +36,7 @@ The script will create a rollable table named "Silver Table" with all 50 possibi
         { name: "Recall: You regain the use of an expended spell slot or ability that normally requires a long or short rest to regain." },
         { name: "Take It From the Top: Use this effect during a combat encounter. You and your allies may reroll initiative; you may also choose to force enemies to reroll initiative." },
         { name: "On the Run: You come across a creature or a group of creatures being pursued by, or escaping from something; the DM determines the exact nature of the creature's plight." },
-        { name: "The Game is Afoot: Change a combat encounter into a chase encounter, where you have to catch some (or all) of the still living opponents to succeed. You have to prevent them from moving for at least one round, or surround them on two sides to consider them "caught"." },
+        { name: "The Game is Afoot: Change a combat encounter into a chase encounter, where you have to catch some (or all) of the still living opponents to succeed. You have to prevent them from moving for at least one round, or surround them on two sides to consider them 'caught'." },
         { name: "What Have We Done?: You may roll up to 3 effects; the DM may roll as many, and may use them as they see fit." },
         { name: "Mopping Up: Use this effect when the remaining enemies in combat are bloodied (below half health) and do not have the ability to take legendary actions. The combat is immediately resolved with your party victorious." },
         { name: "It's Quiet... Too Quiet: Use this effect when your party has been caught by surprise; you and your allies don't lose your ability to act on the first round." },
@@ -64,7 +64,7 @@ The script will create a rollable table named "Silver Table" with all 50 possibi
     setTimeout(function() {
         $(".rollabletable").find("td:contains('new-table')").last().parent().click();
         const tableWidget = $(".ui-dialog").find("span.ui-dialog-title:contains('new-table')").last().parent().parent();
-        tableWidget.find("input.name").val("Silver Table");
+        tableWidget.find("input.name").val("SilverTable");
         for (let i = 0; i < rows.length; i++) {
             tableWidget.find("button.addtableitem").click();
             const itemWidget = $(".ui-dialog").find("span.ui-dialog-title:contains('Edit Table Item')").last().parent().parent();
